@@ -1,0 +1,20 @@
+#!/bin/bash
+D1="dir1"
+D2="/tmp/dir2"
+D3="./dir3"
+
+F1="fileA fileB"
+F2="fileC"
+F3="fileD fileE"
+
+for i in 1 2 3; do
+    J=D$i; DIR=${!J}
+    if [ ! -d $DIR ]; then
+	mkdir $DIR
+    fi
+    J=F$i; FILES=${!J}
+    cp $FILES $DIR
+done
+
+echo "Output should be:"
+wc $F1 $F2 $F3 | tail -1 | sed 's/total//'

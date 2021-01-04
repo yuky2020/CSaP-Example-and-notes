@@ -1,0 +1,11 @@
+#!/bin/bash
+D1="dir1"
+D2="/tmp/dir2"
+D3="./dir3"
+
+for i in 1 2 3; do
+    J=D$i; DIR=${!J}
+    if [ -d $DIR ]; then
+	echo yes | rm -r $DIR
+    fi
+done
